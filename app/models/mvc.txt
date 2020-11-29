@@ -1,0 +1,19 @@
+MVC - Model, View, Controller
+
+1. request made at browser
+2. request received at router of rails app
+3. request routed to appropriate action controller
+4. action controller either renders a view template or communicates w/ model
+5. model communicates with db
+6. model sends back info to controller
+7. controller renders view
+
+Conventional expectations
+- To set a route route, define @/config/routes.rb that points to a controller#action (ex. root 'pages#home')
+* naming
+- pages_controller > home(action) : rails expects views/pages/home.html.erb
+* command
+```
+rails generate controller pages
+```
+-> generated controller/pages_controller & views/pages
