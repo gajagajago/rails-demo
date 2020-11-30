@@ -1,5 +1,5 @@
 module Bcrypt2
-  require 'bcrypt'
+  # require 'bcrypt'
   puts "Module Bcrypt2 activated!!"
 
   def self.create_record
