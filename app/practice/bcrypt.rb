@@ -1,5 +1,5 @@
-# require 'bcrypt'
-# require 'io/console'
+require 'bcrypt'
+require 'io/console'
 
 my_password = BCrypt::Password.create("daniel1004")
 
