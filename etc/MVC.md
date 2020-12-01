@@ -49,7 +49,7 @@ rails routes --expanded # to see all the routes created
 
 - naming convention
 > - model: Article (article.rb)
-> - table: Articles 
+> - table: articles 
 
 - without scaffold
 > 1. create migration file
@@ -71,5 +71,10 @@ ex. class CreateArticles < ActiveRecord::Migration[6.0]
 ```
 ```
 rails db:migrate
+
+rails db:rollback 
+# if you need rollback of migration, since 1 migration file is only usable 1 time 
+# not preferred when co-working. 
+# so, always create new migration file
 ```
 
