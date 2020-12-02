@@ -77,4 +77,20 @@ rails db:rollback
 # not preferred when co-working. 
 # so, always create new migration file
 ```
+> 3. add model (article.rb)
+```
+# to add records via rails console
+1.
+Article.create(title: "aa", description: "bb")
+
+2. 
+article = Article.new
+article.title = "aa"
+article.description = "bb"
+article.save
+
+3.
+article = Article.new(title: "aa", description: "bb")
+article.save
+```
 
