@@ -93,4 +93,32 @@ article.save
 article = Article.new(title: "aa", description: "bb")
 article.save
 ```
+> 4. add validations
+```
+# article.rb
+validates :title, prescence: true
+```
 
+## Show
+- receive url from web -> routes.rb
+```
+  resources :articles, only: [:show] # only show action is available from web 
+```
+- send request to controller
+> Should create controller, controller actions, views forehand
+```
+  def show
+    # '@' makes article an 'instance variable', which can be accessed in views
+    @article = Article.find(params[:id])
+  end
+```
+> byebug(gem)
+> : stops web server and do debugging at server running terminal
+```
+  def show
+    byebug # add byebug wherever you want to debug
+    @article = Article.find(params[:id])
+  end
+```
+3. interact w/ DB via model
+4. post result from controller to web
