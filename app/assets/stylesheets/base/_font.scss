@@ -1,0 +1,41 @@
+/*
+ * Font Face
+ */
+@mixin font-face($family, $name, $weight: 300, $style: normal){
+  @font-face {
+    font-family: $family;
+    src:
+            url('../fonts/NotoSans/#{$name}.woff2') format('woff2'),
+            url('../fonts/NotoSans/#{$name}.woff') format('woff'),
+            url('../fonts/NotoSans/#{$name}.otf') format('opentype'),
+            url('../fonts/NotoSans/#{$name}.eot') format('embedded-opentype');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@include font-face(NotoSans-Bold, 'NotoSans-Bold');
+@include font-face(NotoSans-Medium, 'NotoSans-Medium');
+@include font-face(NotoSans-Regular, 'NotoSans-Regular');
+@include font-face(NotoSans-Light, 'NotoSans-Light');
+@include font-face(NotoSans-DemiLight, 'NotoSans-DemiLight');
+
+.f-bold {
+  font-family: NotoSans-Bold;
+}
+
+.f-medium {
+  font-family: NotoSans-Medium;
+}
+
+.f-regular {
+  font-family: NotoSans-Regular;
+}
+
+.f-light {
+  font-family: NotoSans-Light;
+}
+
+.f-demilight {
+  font-family: NotoSans-DemiLight;
+}

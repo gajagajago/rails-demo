@@ -1,0 +1,37 @@
+/*
+ * Generate Margin, Padding, Font class
+ * $max is the max limit of size
+ * $offset is the increment of each loop
+ * $unit should always be 'px'
+ */
+$max: 40;
+$offset: 1;
+$unit: 'px';
+
+@mixin list-loop($className, $styleName) {
+  $i: 0;
+  @while ($i <= $max) {
+    #{$className + $i} {
+      #{$styleName}: #{$i + $unit} !important;
+    }
+    $i: $i + $offset;
+  }
+}
+
+@include list-loop('.m-', 'margin');
+@include list-loop('.m-t-', 'margin-top');
+@include list-loop('.m-r-', 'margin-right');
+@include list-loop('.m-b-', 'margin-bottom');
+@include list-loop('.m-l-', 'margin-left');
+@include list-loop('.p-', 'padding');
+@include list-loop('.p-t-', 'padding-top');
+@include list-loop('.p-r-', 'padding-right');
+@include list-loop('.p-b-', 'padding-bottom');
+@include list-loop('.p-l-', 'padding-left');
+@include list-loop('.f-', 'font-size');
+
+.m-a { margin: auto; }
+.m-t-a { margin-top: auto !important }
+.m-b-a { margin-bottom: auto !important }
+.m-l-a { margin-left: auto !important }
+.m-r-a { margin-right: auto !important }
