@@ -14,8 +14,17 @@
     <tr>
       <td><%=article.title %></td>
       <td><%=article.description %></td>
-      <td>edit</td>
+      <td>
+        <%= link_to 'Edit', :action => :edit, :id => article.id %>
+        <%= link_to 'Delete', article_path(article), method: :delete %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
+
+<style lang="scss" scoped>
+  table {
+      text-align: center;
+  }
+</style>

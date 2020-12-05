@@ -34,7 +34,13 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article name: #{params.require(:article).require(:title)} is updated!"
       redirect_to @article
     else
-      render 'commons/error'
+      render 'edit'
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to articles_path
   end
 end
