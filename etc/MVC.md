@@ -108,7 +108,7 @@ validates :title, prescence: true
 > Should create controller, controller actions, views forehand
 ```
   def show
-    # '@' makes article an 'instance variable', which can be accessed in views
+    # '@' makes article an 'instance variable' of a model
     @article = Article.find(params[:id])
   end
 ```
@@ -122,3 +122,32 @@ validates :title, prescence: true
 ```
 3. interact w/ DB via model
 4. post result from controller to web
+
+## Views
+- Templates
+> <% %>: execute ruby code that has no return (condition/loop/block)
+> <%= %>: when output
+```
+<% @people.each do |person| %>
+  Name: <%= person.name %>
+<% end %>
+```
+
+- Partials: render a partial view 
+```
+<%= render "menu %> # renders _menu.html.erb as a partial view
+```
+
+- FormHelper: create forms based on your models
+> when submitted, form inputs are bundled into params object and pushed back to controller
+
+> form_for
+```
+# equal to <%= form_with scope: :person, url: articles_path
+
+<%= form_for @person, url: { action: "create" } do |f| %>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %>
+  <%= submit_tag 'Create' %>
+<% end %>    
+```

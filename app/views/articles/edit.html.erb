@@ -1,0 +1,35 @@
+<h1>Edit</h1>
+
+<%= form_with(model: @article, local: true)  do |f| %>
+  <div class="m-b-20">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="m-b-20">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="m-b-20 flex-row">
+    <p class="m-r-5">Updated at: </p>
+    <p><%= @article.updated_at %></p>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<style lang="scss" scoped>
+    div {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+    }
+</style>
