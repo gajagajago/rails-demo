@@ -8,24 +8,24 @@
   <h1>Create New Article</h1>
 
   <%= form_with scope: :article, url: articles_path, local: true do |f| %>
-    <p>
+    <div class="m-b-20">
       <%= f.label :title %>
       <%= f.text_field :title %>
-    </p>
+    </div>
 
-    <p>
+    <div class="m-b-20">
       <%= f.label :description %>
       <%= f.text_area :description %>
-    </p>
+    </div>
 
-    <p>
+    <div>
       <%= f.submit %>
-    </p>
+    </div>
   <% end %>
 <% end %>
 
 <style lang="scss" scoped>
-  p {
+  div {
       width: 300px;
       display: flex;
       flex-direction: column;
