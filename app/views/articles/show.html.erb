@@ -1,8 +1,21 @@
 <h1>Showing article details</h1>
 
-<p class="f-bold">Title: <%=@article.title %></p>
-<p class="m-l-8">Description: <%=@article.description %></p>
+<%= form_with scope: :article, url: articles_path, local: true do |f| %>
+  <div class="m-b-20">
+    <%= f.label :title %>
+    <%= f.text_field :title, :readonly => true %>
+  </div>
+
+  <div class="m-b-20">
+    <%= f.label :description %>
+    <%= f.text_area :description, :readonly => true %>
+  </div>
+<% end %>
 
 <style lang="scss" scoped>
-
+    div {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
 </style>
