@@ -1,8 +1,6 @@
 <% if @article.errors.any? %>
-  <%= @article.errors.full_messages.each do |e| %>
-    <p>
-      <%= e %>
-    </p>
+  <% @article.errors.full_messages.each do |e| %>
+    <%= render partial: "commons/errors", locals: { error: e } %>
   <% end %>
 
 <% else %>
@@ -20,11 +18,11 @@
 
     <div class="m-b-20 flex-row">
       <p class="m-r-5">Updated at: </p>
-      <p><%= @article.updated_at %></p>
+      <p><%= time_ago_in_words(@article.updated_at) %> ago</p>
     </div>
 
     <div>
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-outline-info" %>
     </div>
   <% end %>
 

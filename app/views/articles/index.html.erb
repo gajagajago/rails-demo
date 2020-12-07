@@ -1,31 +1,15 @@
-<h1>Index</h1>
-
-<table>
-  <thead>
-  <tr>
-    <th class="f-bold">Title</th>
-    <th class="f-bold">Description</th>
-    <th class="f-bold">Actions</th>
-  </tr>
-  </thead>
-
-  <tbody>
+<div class="grid-col2">
   <% @article.each do |article| %>
-    <tr>
-      <td><%=article.title %></td>
-      <td><%=article.description %></td>
-      <td>
-        <%= link_to 'Show', article_path(article) %>
-        <%= link_to 'Edit', edit_article_path(article) %>
-        <%= link_to 'Delete', article_path(article), method: :delete %>
-      </td>
-    </tr>
+    <%= render partial: "card", locals: { article: article } %>
   <% end %>
-  </tbody>
-</table>
+</div>
+
+<%= link_to 'New', new_article_path, class: "btn btn-outline-primary" %>
 
 <style lang="scss" scoped>
-  table {
-      text-align: center;
+  .grid-col2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
   }
 </style>

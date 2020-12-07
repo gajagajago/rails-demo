@@ -1,8 +1,6 @@
 <% if @article.errors.any? %>
-  <%= @article.errors.full_messages.each do |e| %>
-    <p>
-      <%= e %>
-    </p>
+  <% @article.errors.full_messages.each do |e| %>
+    <%= render partial: "commons/errors", locals: { error: e } %>
   <% end %>
 <% else %>
   <h1>Create New Article</h1>
@@ -19,7 +17,7 @@
     </div>
 
     <div>
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-outline-primary" %>
     </div>
   <% end %>
 <% end %>
