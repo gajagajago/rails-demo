@@ -1,0 +1,15 @@
+<div class="grid-col2">
+  <% @user.each do |user| %>
+    <%= render partial: "card", locals: { user: user } %>
+  <% end %>
+</div>
+
+<%= link_to 'New', new_user_path, class: "btn btn-outline-primary" %>
+
+<style lang="scss" scoped>
+    .grid-col2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+    }
+</style>
