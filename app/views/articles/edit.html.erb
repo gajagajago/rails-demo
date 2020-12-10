@@ -16,9 +16,13 @@
       <%= f.text_area :description %>
     </div>
 
-    <div class="m-b-20 flex-row">
-      <p class="m-r-5">Updated at: </p>
-      <p><%= time_ago_in_words(@article.updated_at) %> ago</p>
+    <div class="m-b-20">
+      <div class="flex-row">
+        <p class="m-r-5">Updated at: </p>
+        <p><%= time_ago_in_words(@article.updated_at) %> ago</p>
+      </div>
+
+      <p>by <%= @article.user.name %></p>
     </div>
 
     <div>

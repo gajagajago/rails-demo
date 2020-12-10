@@ -10,6 +10,8 @@
     <%= f.label :description %>
     <%= f.text_area :description, :readonly => true %>
   </div>
+
+  <p>by <%= @article.user.name %></p>
 <% end %>
 
 <style lang="scss" scoped>

@@ -151,3 +151,43 @@ validates :title, prescence: true
   <%= submit_tag 'Create' %>
 <% end %>    
 ```
+
+## Database
+- ERD(Entity Relationship Diagram): relationship btw tables
+> primary key vs foreign key
+> 1. belongs_to: foreign key is stored in child table
+> 2. has_one, has_many: foreign key is stored in parent table 
+
+> ERD changes .rb files, not migration file
+```
+# belongs_to
+class Book < ApplicationRecord
+  belongs_to :author
+end
+
+# has_one
+class Author < ApplicationRecord
+  has_one :book
+end
+
+# has_many
+class Author < ApplicationRecord
+  has_many :books
+end
+
+# migration
+class CreateBooks < ActiveRecord::Migration[6.0]
+  def change
+    create_table :authors do |t|
+      t.string :name
+      t.timestamps
+    end
+
+    create_table :books do |t|
+      t.belongs_to :author
+      t.datetime :published_at
+      t.timestamps
+    end
+  end
+end
+```

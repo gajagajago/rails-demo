@@ -14,6 +14,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(params.require(:article).permit(:title, :description))
+    # temp assign
+    @article.user = User.last
 
     if @article.save
       flash[:notice] = "Article name: #{params.require(:article).require(:title)} is created!"
