@@ -1,0 +1,34 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.full_messages.each do |e| %>
+    <%= render partial: 'commons/errors', locals: { error: e } %>
+  <% end %>
+
+<% else %>
+  <h1>유저 정보 수정</h1>
+  <%= form_for(@user) do |f| %>
+    <div class="m-b-20">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="m-b-20">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="m-b-20">
+      <%= f.label :password %>
+      <%= f.text_field :password %>
+    </div>
+
+    <%= f.submit '수정', class: "btn btn-outline-primary" %>
+  <% end %>
+<% end %>
+
+<style lang="scss" scoped>
+    div {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+</style>

@@ -17,12 +17,15 @@
     </div>
 
     <div class="m-b-20">
+      <%= f.label :user %>
+      <%= f.collection_select(:user_id, User.all, :id, :name) %>
+    </div>
+
+    <div class="m-b-20">
       <div class="flex-row">
         <p class="m-r-5">Updated at: </p>
         <p><%= time_ago_in_words(@article.updated_at) %> ago</p>
       </div>
-
-      <p>by <%= @article.user.name %></p>
     </div>
 
     <div>

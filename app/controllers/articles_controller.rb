@@ -13,9 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params.require(:article).permit(:title, :description))
-    # temp assign
-    @article.user = User.last
+    @article = Article.new(params.require(:article).permit(:title, :description, :user_id))
 
     if @article.save
       flash[:notice] = "Article name: #{params.require(:article).require(:title)} is created!"
@@ -32,7 +30,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
 
-    if @article.update(params.require(:article).permit(:title, :description))
+    if @article.update(params.require(:article).permit(:title, :description, :user_id))
       flash[:notice] = "Article name: #{params.require(:article).require(:title)} is updated!"
       redirect_to @article
     else
@@ -41,8 +39,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
+    @article = Article.find(params[:id]).destroy
     redirect_to articles_path
   end
 end

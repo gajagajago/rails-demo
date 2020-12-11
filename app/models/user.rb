@@ -6,11 +6,6 @@ class User < ApplicationRecord
   has_secure_password
 
   before_save { self.email = email.downcase }
-  # before_save { self.password = encrypt_password(password) }
 
   has_many :articles
-
-  # def encrypt_password(password)
-  #   BCrypt::Password.create(password)
-  # end
 end

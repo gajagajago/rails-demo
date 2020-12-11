@@ -1,0 +1,21 @@
+<h1>유저 정보</h1>
+
+<%= form_with scope: :user, url: users_path, local: true do |f| %>
+  <div class="m-b-20">
+    <%= f.label :name %>
+    <%= f.text_field :name, readonly: true %>
+  </div>
+
+  <div class="m-b-20">
+    <%= f.label :email %>
+    <%= f.text_field :email, readonly: true %>
+  </div>
+<% end %>
+
+<style lang="scss" scoped>
+    div {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+</style>

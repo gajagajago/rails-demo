@@ -11,7 +11,12 @@
     <%= f.text_area :description, :readonly => true %>
   </div>
 
-  <p>by <%= @article.user.name %></p>
+  <div class="m-b-20">
+    <%= f.label :user %>
+    <%= fields_for :user, @article.user do |u| %>
+      <%= u.collection_select(:id, User.all, :id, :name, {}, { disabled: true }) %>
+    <% end %>
+  </div>
 <% end %>
 
 <style lang="scss" scoped>
