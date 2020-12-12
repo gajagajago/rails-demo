@@ -4,7 +4,7 @@
   <% end %>
 
 <% else %>
-  <h1>Edit</h1>
+  <h1>게시글 수정</h1>
   <%= form_with(model: @article, local: true)  do |f| %>
     <div class="m-b-20">
       <%= f.label :title %>
@@ -28,9 +28,8 @@
       </div>
     </div>
 
-    <div>
-      <%= f.submit class: "btn btn-outline-info" %>
-    </div>
+    <%= f.submit '수정', class: "btn btn-outline-info" %>
+
   <% end %>
 
 <% end %>

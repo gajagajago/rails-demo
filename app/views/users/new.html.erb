@@ -5,7 +5,7 @@
 <% else %>
   <h1>회원가입</h1>
 
-  <%= form_with scope: :user, url: users_path, local: true do |f| %>
+  <%= form_for(@user) do |f| %>
     <div class="m-b-20">
       <%= f.label :name %>
       <%= f.text_field :name %>

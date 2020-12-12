@@ -22,6 +22,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'normalize-scss', '~> 7.0'
 # Simple email validation technique by checking if there’s an at-sign (@) with some characters before or after it.
 gem 'email_validator'
+# Pagination library for Rails, Sinatra, Merb, DataMapper, and more
+gem 'will_paginate', '~> 3.1.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

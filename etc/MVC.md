@@ -114,6 +114,7 @@ validates :title, prescence: true
 ```
 > byebug(gem)
 > : stops web server and do debugging at server running terminal
+> command: continue to stop debugging
 ```
   def show
     byebug # add byebug wherever you want to debug

@@ -1,4 +1,4 @@
-<div class="card m-b-20" style="width: 18rem;">
+<div class="card f-regular m-b-20" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title f-bold"><%= user.name %></h5>
     <p class="card-text m-b-10"><%= user.email %></p>
@@ -8,28 +8,16 @@
       <%= link_to 'Delete', user_path(user), method: :delete, class: "btn btn-outline-danger" %>
     </div>
     <hr />
-    <div class="timestamp">
-      <p>Created <%= time_ago_in_words(user.created_at) %> ago</p>
-      <p>Edited <%= time_ago_in_words(user.updated_at) %> ago</p>
+    <div class="articles-count f-12 text-center">
+      <p>has <%= user.articles.count %> <%= user.articles.count > 1 ? 'articles' : 'article' %></p>
     </div>
   </div>
 </div>
 
 <style lang="scss" scoped>
-    .card {
-        font-family: NotoSans-Regular;
-    }
     .button-wrapper {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    }
-
-    .timestamp {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 12px;
     }
 </style>

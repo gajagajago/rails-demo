@@ -9,7 +9,7 @@
     </div>
     <hr />
     <div class="timestamp">
-      <p>by <%= article.user.name %></p>
+      <p>by <%= link_to article.user.name, user_path(article.user) %></p>
       <p>Created <%= time_ago_in_words(article.created_at) %> ago</p>
       <p>Edited <%= time_ago_in_words(article.updated_at) %> ago</p>
     </div>

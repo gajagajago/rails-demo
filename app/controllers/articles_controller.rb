@@ -1,10 +1,9 @@
 class ArticlesController < ApplicationController
   def index
-    @article = Article.all
+    @article = Article.order('id DESC').paginate(page: params[:page], per_page: 6)
   end
 
   def show
-    # byebug
     @article = Article.find(params[:id])
   end
 
@@ -13,10 +12,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params.require(:article).permit(:title, :description, :user_id))
+    @article = Article.new(article_params)
 
     if @article.save
-      flash[:notice] = "Article name: #{params.require(:article).require(:title)} is created!"
+      flash[:notice] = "Article name: #{@article.title} is created!"
       redirect_to @article
     else
       render 'new'
@@ -30,8 +29,8 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
 
-    if @article.update(params.require(:article).permit(:title, :description, :user_id))
-      flash[:notice] = "Article name: #{params.require(:article).require(:title)} is updated!"
+    if @article.update(article_params)
+      flash[:notice] = "Article name: #{@article.title} is updated!"
       redirect_to @article
     else
       render 'edit'
@@ -41,5 +40,9 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id]).destroy
     redirect_to articles_path
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :description, :user_id)
   end
 end
