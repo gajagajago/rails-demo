@@ -58,6 +58,7 @@ end
 group :production do
   # sqlite3 is not suggested for production
   # gem 'mysql2'
+  gem 'sqlite3', '~> 1.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
