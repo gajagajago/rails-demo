@@ -19,6 +19,13 @@ module SessionsHelper
     !!current_user
   end
 
+  def require_user
+    if !user_signed_in?
+      flash[:alert] = "로그인 해주세요"
+      redirect_to login_path
+    end
+  end
+
   def log_out
     session.delete(:user_id)
     @current_user = nil
