@@ -1,0 +1,23 @@
+<h1>로그인</h1>
+
+<%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+  <div class="m-b-20">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="m-b-20">
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+  </div>
+
+  <%= f.submit '로그인', class: "btn btn-outline-primary" %>
+<% end %>
+
+<style lang="scss" scoped>
+    div {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+</style>

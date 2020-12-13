@@ -192,3 +192,6 @@ class CreateBooks < ActiveRecord::Migration[6.0]
   end
 end
 ```
+
+## Session
+- Does not require a model, so only controller & views
