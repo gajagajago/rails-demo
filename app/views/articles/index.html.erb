@@ -1,10 +1,12 @@
+<h1>게시글</h1>
+
 <div class="grid-col2">
   <% @article.each do |article| %>
     <%= render partial: "card", locals: { article: article } %>
   <% end %>
 </div>
 
-<%= link_to 'New', new_article_path, class: "btn btn-outline-primary" %>
+<%= button_to 'New', new_article_path, method: :get, class: "btn btn-outline-primary", disabled: !user_signed_in? %>
 
 <%= will_paginate @article, class: "flickr_pagination" %>
 
