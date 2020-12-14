@@ -18,7 +18,7 @@
 
     <div class="m-b-20">
       <%= f.label :user %>
-      <%= f.collection_select(:user_id, User.all, :id, :name, { selected: current_user.id }, { disabled: true }) %>
+      <%= f.collection_select(:user_id, User.all, :id, :name, { selected: current_user.id }) %>
     </div>
 
     <%= f.submit class: "btn btn-outline-primary" %>
