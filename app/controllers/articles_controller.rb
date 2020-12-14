@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @article.user
+    if current_user != @article.user && !admin?
       flash[:alert] = "게시글의 작성자가 아닙니다"
       redirect_to @article
     end

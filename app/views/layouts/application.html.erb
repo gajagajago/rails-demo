@@ -12,11 +12,18 @@
   <body>
     <%= render 'commons/navbar' %>
 
-    <div class="alert-primary">
-      <% flash.each do |name, msg| %>
-        <%= msg %>
+      <% flash.each do |type, msg|%>
+        <div class="alert-<%= if type == "notice"
+                                "primary"
+                              elsif
+                                type == "alert"
+                                "danger"
+                              else
+                                "info"
+                              end %>">
+          <%= msg %>
+        </div>
       <% end %>
-    </div>
 
     <div class="container">
       <%= yield %>

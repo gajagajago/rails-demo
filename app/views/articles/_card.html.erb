@@ -4,8 +4,8 @@
     <p class="card-text m-b-10"><%= article.description %></p>
     <div class="button-wrapper m-b-10">
       <%= button_to 'Show', article_path(article), method: :get, class: "btn btn-outline-success" %>
-      <%= button_to 'Edit', edit_article_path(article), method: :get, class: "btn btn-outline-info", disabled: (article.user != current_user) %>
-      <%= button_to 'Delete', article_path(article), method: :delete, class: "btn btn-outline-danger", disabled: (article.user != current_user) %>
+      <%= button_to 'Edit', edit_article_path(article), method: :get, class: "btn btn-outline-info", disabled: (article.user != current_user && !admin?) %>
+      <%= button_to 'Delete', article_path(article), method: :delete, class: "btn btn-outline-danger", disabled: (article.user != current_user && !admin?) %>
     </div>
     <hr />
     <div class="timestamp">
