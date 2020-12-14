@@ -24,8 +24,7 @@ gem 'normalize-scss', '~> 7.0'
 gem 'email_validator'
 # Pagination library for Rails, Sinatra, Merb, DataMapper, and more
 gem 'will_paginate', '~> 3.1.0'
-gem 'sqlite3', '~> 1.4'
-
+gem 'pg'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
