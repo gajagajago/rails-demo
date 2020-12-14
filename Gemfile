@@ -24,7 +24,7 @@ gem 'normalize-scss', '~> 7.0'
 gem 'email_validator'
 # Pagination library for Rails, Sinatra, Merb, DataMapper, and more
 gem 'will_paginate', '~> 3.1.0'
-
+gem 'pg'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -33,7 +33,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
+  # gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -57,7 +57,8 @@ end
 
 group :production do
   # sqlite3 is not suggested for production
-  gem 'pg'
+  # gem 'mysql2'
+  # gem 'sqlite3', '~> 1.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
