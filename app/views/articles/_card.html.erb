@@ -1,7 +1,7 @@
 <div class="card m-b-20" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title f-bold"><%= article.title %></h5>
-    <p class="card-text m-b-5"><%= truncate(article.description, length: 39) %></p>
+    <p class="card-text m-b-5"><%= truncate(article.description, length: 45) %></p>
     <% if article.categories.any? %>
       <% article.categories.each do |category| %>
         <%= render partial: 'categories/category', locals: { category: category} %>
@@ -16,7 +16,7 @@
       <hr />
       <div class="timestamp">
         <p>by <%= link_to article.user.name, user_path(article.user) %></p>
-        <%= article.created_at.strftime("%Y/%m/%d") %>
+        <%= article.created_at.in_time_zone('Seoul').strftime("%Y/%m/%d %I:%M%p") %>
       </div>
     </div>
   </div>
