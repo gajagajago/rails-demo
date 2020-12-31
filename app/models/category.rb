@@ -3,6 +3,9 @@ class Category < ApplicationRecord
 
   before_save :downcase_fields
 
+  has_many :article_categories
+  has_many :articles, through: :article_categories
+
   def downcase_fields
     self.name.downcase!
   end
