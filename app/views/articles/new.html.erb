@@ -13,7 +13,17 @@
 
     <div class="m-b-20">
       <%= f.label :description %>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, :rows => 10 %>
+    </div>
+
+    <div class="m-b-20">
+      <%= f.label :category %>
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, include_hidden: false do |checkbox| %>
+        <div class="checkbox_container">
+          <%= checkbox.check_box %>
+          <%= checkbox.label %>
+        </div>
+      <% end %>
     </div>
 
     <div class="m-b-20">
@@ -30,5 +40,19 @@
       width: 300px;
       display: flex;
       flex-direction: column;
+  }
+
+  .checkbox_container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  }
+
+  .checkbox_container input {
+      margin-right: 5px;
+  }
+
+  .checkbox_container label {
+      margin: 0;
   }
 </style>

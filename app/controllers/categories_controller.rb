@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [:show, :edit, :update]
   before_action :require_user, except: [:index, :show]
   before_action :require_admin_user, except: [:index, :show]
 
@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @articles = @category.articles.order('id DESC').paginate(page: params[:page], per_page: 6)
   end
 
   def new
@@ -22,6 +23,18 @@ class CategoriesController < ApplicationController
       redirect_to categories_path
     else
       render 'new'
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @category.update(category_params)
+      flash[:notice] = "#{@category.name} 이 업데이트 됐습니다"
+      redirect_to @category
+    else
+      render 'edit'
     end
   end
 

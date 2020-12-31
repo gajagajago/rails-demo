@@ -1,1 +1,17 @@
-<%= @category.name %>
+<h1><%= @category.name %></h1>
+
+<div class="grid-col2">
+  <% @articles.each do |a| %>
+    <%= render partial: 'articles/card', locals: { article: a } %>
+  <% end %>
+</div>
+
+<%= will_paginate @articles, class: "flickr_pagination" %>
+
+<style lang="scss" scoped>
+    .grid-col2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+    }
+</style>
