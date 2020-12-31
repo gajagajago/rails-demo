@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :description, :user_id)
+    params.require(:article).permit(:title, :description, :user_id, category_ids: [])
   end
 
   def set_article
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @article.user
+    if current_user != @article.user && !admin?
       flash[:alert] = "게시글의 작성자가 아닙니다"
       redirect_to @article
     end

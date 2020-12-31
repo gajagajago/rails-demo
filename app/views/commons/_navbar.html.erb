@@ -16,6 +16,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to '유저', users_path, class: "dropdown-item" %>
           <%= link_to '게시글', articles_path, class: "dropdown-item" %>
+          <%= link_to '카테고리', categories_path, class: "dropdown-item" %>
           <!--          <div class="dropdown-divider"></div>-->
         </div>
       </li>
@@ -28,7 +29,11 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to '프로필', user_path(@current_user), class: "nav-link" %>
+          <% if admin? %>
+            <%= link_to '프로필(어드민)', user_path(@current_user), class: "nav-link" %>
+        <% else %>
+            <%= link_to '프로필', user_path(@current_user), class: "nav-link" %>
+        <% end %>
         </li>
         <li class="nav-item">
           <%= link_to '로그아웃', logout_path, class: "nav-link", method: :delete %>

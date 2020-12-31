@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     end
 
     @user = User.new(user_params)
-
     if (@user.save)
       flash[:notice] = "유저: #{@user.name} 님이 생성되었습니다!"
       log_in @user
@@ -57,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @user
+    if current_user != @user && !admin?
       flash[:alert] = "해당 유저가 아닙니다"
       redirect_to @user
     end

@@ -1,0 +1,25 @@
+<% if @category.errors.any? %>
+  <% @category.errors.full_messages.each do |e| %>
+    <%= render partial: "commons/errors", locals: { error: e } %>
+  <% end %>
+
+<% else %>
+  <h1>카테고리 수정</h1>
+  <%= form_with(model: @category, local: true)  do |f| %>
+    <div class="m-b-20">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <%= f.submit '수정', class: "btn btn-outline-info" %>
+  <% end %>
+
+<% end %>
+
+<style lang="scss" scoped>
+    div {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
