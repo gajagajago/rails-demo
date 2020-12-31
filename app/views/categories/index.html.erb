@@ -1,9 +1,13 @@
 <h1>카테고리</h1>
 
-<div class="card" style="width: 18rem;">
+<div class="card m-b-20" style="width: 18rem;">
   <ul class="list-group list-group-flush">
     <% @category.each do |category| %>
       <li class="list-group-item"><%= link_to category.name, category_path(category) %></li>
     <% end %>
   </ul>
 </div>
+
+<%= button_to 'New', new_category_path, method: :get, class: "btn btn-outline-primary", disabled: !(user_signed_in? && admin?) %>
+
+<%= will_paginate @category, class: "flickr_pagination" %>

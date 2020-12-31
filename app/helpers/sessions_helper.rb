@@ -26,6 +26,15 @@ module SessionsHelper
     end
   end
 
+  def require_admin_user
+    require_user
+
+    if !admin?
+      flash[:alert] = "어드민만 사용가능합니다"
+      redirect_to root_path
+    end
+  end
+
   def admin?
     user_signed_in? && current_user.admin?
   end
