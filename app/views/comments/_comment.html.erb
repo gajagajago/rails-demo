@@ -1,0 +1,31 @@
+<li class="comment">
+  <div class="comment-info">
+    <%= comment.user.name %>
+    <p class="time"><%= time_ago_in_words(comment.created_at) %></p>
+  </div>
+  <%= comment.comment %>
+</li>
+
+<style lang="scss" scoped>
+  .comment {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+  }
+
+  .comment-info {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 10px;
+  }
+
+  .time {
+      align-self: center;
+      padding: 0 20px;
+      font-size: 12px;
+      color: gray;
+  }
+
+  li {
+      list-style: none;
+  }
+</style>

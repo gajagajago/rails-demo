@@ -1,17 +1,17 @@
-<h1>Showing article details</h1>
+<h1>게시글 내용</h1>
 
 <%= form_with scope: :article, url: articles_path, local: true do |f| %>
-  <div class="m-b-20">
+  <div class="block m-b-20">
     <%= f.label :title %>
     <%= f.text_field :title, :readonly => true %>
   </div>
 
-  <div class="m-b-20">
+  <div class="block m-b-20">
     <%= f.label :description %>
     <%= f.text_area :description, :readonly => true, :rows => 10 %>
   </div>
 
-  <div class="m-b-20">
+  <div class="block m-b-20">
     <%= f.label :category %>
     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |checkbox| %>
       <div class="checkbox_container">
@@ -20,17 +20,19 @@
       </div>
     <% end %>
   </div>
-
-  <div class="m-b-20">
-    <%= f.label :user %>
-    <%= fields_for :user, @article.user do |u| %>
-      <%= u.collection_select(:id, User.all, :id, :name, {}, { disabled: true }) %>
-    <% end %>
-  </div>
 <% end %>
 
+<p>댓글</p>
+<ul>
+  <% @comment.each do |c| %>
+    <%= render partial: 'comments/comment', locals: { comment: c }%>
+  <% end %>
+</ul>
+<%= will_paginate @comment, class: "digg_pagination" %>
+<%= render partial: 'comments/new', locals: { article: @article} %>
+
 <style lang="scss" scoped>
-    div {
+    .block {
         width: 300px;
         display: flex;
         flex-direction: column;
@@ -48,5 +50,14 @@
 
     .checkbox_container label {
         margin: 0;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    .digg_pagination {
+        display: flex;
+        justify-content: center;
     }
 </style>
