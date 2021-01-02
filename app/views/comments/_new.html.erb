@@ -1,0 +1,24 @@
+<p class="m-b-10">댓글 쓰기</p>
+
+<%= form_with scope: :comment, url: comments_path, local: true do |f| %>
+  <div class="comment-input-wrapper">
+    <%= f.text_area :comment, :rows => 3 %>
+    <%= f.hidden_field :article_id, value: article.id%>
+    <%= f.submit '등록', class: "btn btn-outline-primary btn-comment" %>
+  </div>
+<% end %>
+
+<style lang="scss" scoped>
+  .comment-input-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+  textarea {
+      width: 85%;
+  }
+
+  .btn-comment {
+      width: 10%;
+  }
+</style>

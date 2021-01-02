@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comment = @article.comments.order('id DESC').paginate(page: params[:page], per_page: 10)
   end
 
   def new
