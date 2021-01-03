@@ -3,7 +3,7 @@
     <%= comment.user.name %>
     <p class="time"><%= time_ago_in_words(comment.created_at) %></p>
   </div>
-  <%= comment.comment %>
+  <p class="f-12"><%= comment.comment %></p>
 </li>
 
 <style lang="scss" scoped>
