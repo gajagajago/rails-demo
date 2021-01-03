@@ -57,10 +57,6 @@
 
 @mixin flex-between {
   justify-content: space-between;
-
-  & > * {
-    flex: 0 0 auto;
-  }
 }
 
 @mixin items-center {

@@ -4,11 +4,11 @@ class ArticlesController < ApplicationController
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
-    @article = Article.order('id DESC').paginate(page: params[:page], per_page: 6)
+    @article = Article.order('id DESC').paginate(page: params[:page], per_page: 8)
   end
 
   def show
-    @comment = @article.comments.order('id DESC').paginate(page: params[:page], per_page: 10)
+    @comment = @article.comments.paginate(page: params[:page], per_page: 10)
   end
 
   def new

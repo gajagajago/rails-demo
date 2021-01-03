@@ -1,4 +1,4 @@
-<h1>유저 정보</h1>
+<h2>유저 정보</h2>
 
 <%= form_with scope: :user, url: users_path, local: true do |f| %>
   <div class="form m-b-20">
@@ -14,10 +14,11 @@
 
 <h2>게시글</h2>
 <div class="grid-col2">
-  <% @user.articles.reverse.each do |a| %>
+  <% @article.each do |a| %>
     <%= render partial: 'articles/card', locals: { article: a } %>
   <% end %>
 </div>
+<%= will_paginate @article, class: "flickr_pagination" %>
 
 <style lang="scss" scoped>
     .form {
