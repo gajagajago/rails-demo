@@ -14,10 +14,11 @@
 
 <h2>게시글</h2>
 <div class="grid-col2">
-  <% @user.articles.reverse.each do |a| %>
+  <% @article.each do |a| %>
     <%= render partial: 'articles/card', locals: { article: a } %>
   <% end %>
 </div>
+<%= will_paginate @article, class: "flickr_pagination" %>
 
 <style lang="scss" scoped>
     .form {

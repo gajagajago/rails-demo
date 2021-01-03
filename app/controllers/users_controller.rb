@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @article = @user.articles.order('id DESC').paginate(page: params[:page], per_page: 6)
   end
 
   def new
