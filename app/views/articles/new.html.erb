@@ -3,7 +3,7 @@
     <%= render partial: "commons/errors", locals: { error: e } %>
   <% end %>
 <% else %>
-  <h1>Create New Article</h1>
+  <h1>게시글 작성</h1>
 
   <%= form_with scope: :article, url: articles_path, local: true do |f| %>
     <div class="m-b-20">
