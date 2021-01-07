@@ -1,6 +1,9 @@
 <li class="comment">
   <div class="flex-row comment-info">
     <div class="flex-row">
+      <% if comment.commentable %>
+        <i class="fas fa-share fa-flip-vertical m-r-6"></i>
+      <% end %>
       <%= comment.user.name %>
       <p class="time"><%= time_ago_in_words(comment.created_at) %></p>
     </div>
@@ -16,6 +19,12 @@
   </div>
   <p class="f-12"><%= comment.comment %></p>
 </li>
+
+<% if comment.replies.exists? %>
+  <% comment.replies.each do |r| %>
+    <%= render partial: 'comments/comment', locals: { comment: r } %>
+  <% end %>
+<% end %>
 
 <style lang="scss" scoped>
   .flex-row {
@@ -44,7 +53,7 @@
       color: #bbb;
   }
 
-  .fa-comment, .fa-pencil-alt, .fa-eraser {
+  .fa-share, .fa-comment, .fa-pencil-alt, .fa-eraser {
       color: #666;
   }
 
