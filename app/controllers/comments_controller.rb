@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def new
     @comment = Comment.new
@@ -29,6 +29,18 @@ class CommentsController < ApplicationController
   def update
     if(@comment.update(comment_params))
       flash[:notice] = "댓글이 업데이트 됐습니다"
+    end
+
+    if(@comment.commentable)
+      redirect_to article_path(@comment.commentable.article)
+    else
+      redirect_to article_path(@comment.article)
+    end
+  end
+
+  def destroy
+    if(@comment.destroy)
+      flash[:notice] = "댓글이 삭제되었습니다"
     end
 
     if(@comment.commentable)

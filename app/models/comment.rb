@@ -5,5 +5,5 @@ class Comment < ApplicationRecord
   belongs_to :article, optional: true
   belongs_to :commentable, class_name: "Comment", optional: true
 
-  has_many :replies, class_name: "Comment", foreign_key: "commentable_id"
+  has_many :replies, class_name: "Comment", foreign_key: "commentable_id", dependent: :destroy
 end
