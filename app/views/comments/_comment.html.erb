@@ -1,23 +1,48 @@
 <li class="comment">
   <div class="flex-row comment-info">
     <div class="flex-row">
+      <% if comment.commentable %>
+        <i class="fas fa-share fa-flip-vertical m-r-6"></i>
+      <% end %>
       <%= comment.user.name %>
       <p class="time"><%= time_ago_in_words(comment.created_at) %></p>
     </div>
-    <div class="flex-row">
-      <i class="far fa-thumbs-up fa-xs m-r-6"></i>
-      <i class="far fa-thumbs-down fa-xs m-r-6"></i>
+    <div class="comment-action flex-row">
+<!--      <i class="far fa-thumbs-up fa-xs m-r-6"></i>-->
+<!--      <i class="far fa-thumbs-down fa-xs m-r-6"></i>-->
       <% if comment.user == current_user %>
-        <i class="fas fa-pencil-alt fa-xs m-r-6"></i>
-        <i class="fas fa-eraser fa-xs m-r-6"></i>
+        <a href="/comments/<%= comment.id %>/edit">
+          <i class="fas fa-pencil-alt fa-xs m-r-6"></i>
+        </a>
+        <a href="/comments/<%= comment.id %>" data-method="delete">
+          <i class="fas fa-eraser fa-xs m-r-6"></i>
+        </a>
       <% end %>
-      <i class="fas fa-comment fa-xs"></i>
+      <% if user_signed_in? %>
+        <a role="button" data-toggle="collapse" href="#collapseExample<%= comment.id %>" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fas fa-comment fa-xs" ></i>
+        </a>
+      <% end %>
     </div>
   </div>
   <p class="f-12"><%= comment.comment %></p>
 </li>
 
+<div class="collapse" id="collapseExample<%= comment.id %>">
+  <%= render partial: 'comments/reply', locals: { commentable: comment.commentable || comment } %>
+</div>
+
+<% if comment.replies.exists? %>
+  <% comment.replies.order(:id).each do |r| %>
+    <%= render partial: 'comments/comment', locals: { comment: r } %>
+  <% end %>
+<% end %>
+
 <style lang="scss" scoped>
+  .reply {
+      display: none;
+  }
+
   .flex-row {
       display: flex;
       flex-direction: row;
@@ -40,11 +65,15 @@
       color: gray;
   }
 
+  .comment-action {
+      display: block;
+  }
+
   .fa-thumbs-down {
       color: #bbb;
   }
 
-  .fa-comment, .fa-pencil-alt, .fa-eraser {
+  .fa-share, .fa-comment, .fa-pencil-alt, .fa-eraser {
       color: #666;
   }
 

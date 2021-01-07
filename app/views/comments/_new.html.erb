@@ -3,7 +3,7 @@
     <p class="f-12 f-medium m-b-10">댓글 쓰기</p>
     <div class="cmt-input">
       <%= f.text_area :comment, placeholder: "사랑하는 마음을 담아 댓글을 작성해주세요", :rows => 2 %>
-      <%= f.hidden_field :article_id, value: article.id%>
+      <%= f.hidden_field :article_id, value: article.id %>
       <%= f.submit '등록', class: "btn btn-outline-secondary btn-comment" %>
     </div>
   </div>
