@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy, :set_redirect]
+  before_action :require_user
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def new
     @comment = Comment.new
@@ -15,11 +17,7 @@ class CommentsController < ApplicationController
       flash[:alert] = "댓글 작성에 실패했습니다"
     end
 
-    if(@comment.commentable)
-      redirect_to article_path(@comment.commentable.article)
-    else
-      redirect_to article_path(@comment.article)
-    end
+    set_redirect
 
   end
 
@@ -31,11 +29,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "댓글이 업데이트 됐습니다"
     end
 
-    if(@comment.commentable)
-      redirect_to article_path(@comment.commentable.article)
-    else
-      redirect_to article_path(@comment.article)
-    end
+    set_redirect
   end
 
   def destroy
@@ -43,6 +37,10 @@ class CommentsController < ApplicationController
       flash[:notice] = "댓글이 삭제되었습니다"
     end
 
+    set_redirect
+  end
+
+  def set_redirect
     if(@comment.commentable)
       redirect_to article_path(@comment.commentable.article)
     else
@@ -57,5 +55,12 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @comment.user && !admin?
+      flash[:alert] = "댓글의 작성자가 아닙니다"
+      set_redirect
+    end
   end
 end
