@@ -10,14 +10,14 @@
     <div class="comment-action flex-row">
 <!--      <i class="far fa-thumbs-up fa-xs m-r-6"></i>-->
 <!--      <i class="far fa-thumbs-down fa-xs m-r-6"></i>-->
-      <%# if comment.user == current_user %>
+      <% if comment.user == current_user %>
         <a href="/comments/<%= comment.id %>/edit">
           <i class="fas fa-pencil-alt fa-xs m-r-6"></i>
         </a>
         <a href="/comments/<%= comment.id %>" data-method="delete">
           <i class="fas fa-eraser fa-xs m-r-6"></i>
         </a>
-      <%# end %>
+      <% end %>
       <% if user_signed_in? %>
         <a role="button" data-toggle="collapse" href="#collapseExample<%= comment.id %>" aria-expanded="false" aria-controls="collapseExample">
           <i class="fas fa-comment fa-xs" ></i>
