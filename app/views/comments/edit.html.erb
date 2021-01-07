@@ -1,0 +1,40 @@
+<%= form_with(model: @comment, local: true) do |f| %>
+  <div class="cmt-editor">
+    <p class="f-12 f-medium m-b-10">댓글 수정</p>
+    <div class="cmt-input">
+      <%= f.text_area :comment, :rows => 2 %>
+      <%= f.submit '수정', class: "btn btn-outline-secondary btn-comment" %>
+    </div>
+  </div>
+<% end %>
+
+<style lang="scss" scoped>
+    .cmt-editor {
+        display: flex;
+        flex-direction: column;
+        padding: 12px 16px 20px;
+        margin-bottom: 15px;
+        background: #fcfcfc;
+        border: 1px solid #ddd;
+        border-bottom-color: #ccc;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px -1px rgba(0,0,0,.1);
+    }
+
+    .cmt-input {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    textarea {
+        font-size: 12px;
+        padding: 4px 6px;
+        width: 85%;
+    }
+
+    .btn-comment {
+        font-size: 12px;
+        width: 10%;
+    }
+</style>

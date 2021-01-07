@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:edit, :update]
+
   def new
     @comment = Comment.new
   end
@@ -16,8 +18,27 @@ class CommentsController < ApplicationController
     redirect_to article_path(@comment.article)
   end
 
+  def edit
+  end
+
+  def update
+    if(@comment.update(comment_params))
+      flash[:notice] = "댓글이 업데이트 됐습니다"
+    end
+
+    if(@comment.commentable)
+      redirect_to article_path(@comment.commentable.article)
+    else
+      redirect_to article_path(@comment.article)
+    end
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:comment, :article_id)
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 end
