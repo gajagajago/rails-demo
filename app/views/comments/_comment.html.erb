@@ -15,12 +15,17 @@
           <i class="fas fa-pencil-alt fa-xs m-r-6"></i>
         </a>
         <i class="fas fa-eraser fa-xs m-r-6"></i>
-    <% end %>
-      <i class="fas fa-comment fa-xs"></i>
+      <% end %>
+      <a role="button" data-toggle="collapse" href="#collapseExample<%= comment.id %>" aria-expanded="false" aria-controls="collapseExample">
+        <i class="fas fa-comment fa-xs" ></i>
+      </a>
     </div>
   </div>
   <p class="f-12"><%= comment.comment %></p>
 </li>
+<div class="collapse" id="collapseExample<%= comment.id %>">
+  <%= render partial: 'comments/reply', locals: { commentable: comment.commentable || comment } %>
+</div>
 
 <% if comment.replies.exists? %>
   <% comment.replies.order(:id).each do |r| %>
@@ -29,6 +34,10 @@
 <% end %>
 
 <style lang="scss" scoped>
+  .reply {
+      display: none;
+  }
+
   .flex-row {
       display: flex;
       flex-direction: row;

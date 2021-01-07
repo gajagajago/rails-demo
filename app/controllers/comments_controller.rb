@@ -15,7 +15,12 @@ class CommentsController < ApplicationController
       flash[:alert] = "댓글 작성에 실패했습니다"
     end
 
-    redirect_to article_path(@comment.article)
+    if(@comment.commentable)
+      redirect_to article_path(@comment.commentable.article)
+    else
+      redirect_to article_path(@comment.article)
+    end
+
   end
 
   def edit
@@ -35,7 +40,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:comment, :article_id)
+    params.require(:comment).permit(:comment, :article_id, :commentable_id)
   end
 
   def set_comment
