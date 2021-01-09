@@ -8,15 +8,17 @@
           메세지
         </div>
         <div class="card-body">
-          <p class="card-text">안녕하세요</p>
+          <%= render @messages %>
         </div>
         <div class="card-footer text-muted">
-          <div class="input-group">
-            <input type="text" class="form-control m-r-10" aria-describedby="button-addon2">
-            <button type="button" class="chat-button" id="button-addon2">
-              <i class="fas fa-arrow-circle-up fa-lg"></i>
-            </button>
-          </div>
+          <%= form_with(model: Message, local: true) do |f| %>
+            <div class="input-group">
+              <%= f.text_area :message, class: "form-control m-r-10", :rows => 1 %>
+              <%= f.button :submit, class: "chat-button" do %>
+                <i class="fas fa-arrow-circle-up fa-lg"></i>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -44,5 +46,10 @@
       background: none;
       border: none;
       padding: 0;
+  }
+
+  .input-group {
+      display: flex;
+      flex-direction: row;
   }
 </style>

@@ -1,0 +1,15 @@
+<div class="card-text">
+  <div class="message-user m-r-5">
+    <%= message.user.name %>
+  </div>
+  <div class="message-message">
+    <%= simple_format(message.message) %>
+  </div>
+</div>
+
+<style lang="scss" scoped>
+  .card-text {
+      display: flex;
+      flex-direction: row;
+  }
+</style>
