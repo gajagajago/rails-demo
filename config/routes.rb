@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get 'about', to: 'pages#about'
+  get 'chatroom', to: 'chatroom#index'
 
   resources :users
   resources :articles
