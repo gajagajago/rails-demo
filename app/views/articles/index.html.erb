@@ -6,7 +6,7 @@
   <% end %>
 </div>
 
-<%= button_to 'New', new_article_path, method: :get, class: "btn btn-outline-primary", disabled: !user_signed_in? %>
+<%= button_to '작성', new_article_path, method: :get, class: "btn btn-outline-primary", disabled: !user_signed_in? %>
 
 <%= will_paginate @article, class: "flickr_pagination" %>
 
