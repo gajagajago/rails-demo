@@ -6,18 +6,23 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
-    @message.user = current_user
+    # @message = Message.new(message_params)
+    @message = current_user.messages.build(message_params)
 
     if !@message.save
       flash[:alert] = "채팅 중 오류가 발생했습니다."
+    else
+      ActionCable.server.broadcast "chatroom_channel",
+                                   mod_message: message_render(@message)
     end
-
-    redirect_to chatroom_path
   end
 
   private
   def message_params
     params.require(:message).permit(:message)
+  end
+
+  def message_render(message)
+    render(partial: 'message', locals: { message: message })
   end
 end

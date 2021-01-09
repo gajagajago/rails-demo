@@ -7,13 +7,13 @@
         <div class="card-header">
           메세지
         </div>
-        <div class="card-body">
+        <div class="card-body" id="message-container">
           <%= render @messages %>
         </div>
         <div class="card-footer text-muted">
-          <%= form_with(model: Message, local: true) do |f| %>
+          <%= form_with(model: Message, remote: true) do |f| %>
             <div class="input-group">
-              <%= f.text_area :message, class: "form-control m-r-10", :rows => 1 %>
+              <%= f.text_area :message, class: "form-control m-r-10", id: "message-input", :rows => 1 %>
               <%= f.button :submit, class: "chat-button" do %>
                 <i class="fas fa-arrow-circle-up fa-lg"></i>
               <% end %>

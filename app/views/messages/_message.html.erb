@@ -7,6 +7,8 @@
   <div class="message-message">
     <%= simple_format(message.message) %>
   </div>
+  <%= message.user.name %>
+  <%= current_user.name %>
 </div>
 
 <style lang="scss" scoped>
