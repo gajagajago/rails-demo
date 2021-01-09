@@ -3,9 +3,9 @@
     <h5 class="card-title f-bold"><%= user.name %></h5>
     <p class="card-text m-b-10"><%= user.email %></p>
     <div class="button-wrapper m-b-10">
-      <%= button_to 'Show', user_path(user), method: :get, class: "btn btn-outline-success" %>
-      <%= button_to 'Edit', edit_user_path(user), method: :get,class: "btn btn-outline-info", disabled: (user != current_user && !admin?) %>
-      <%= button_to 'Delete', user_path(user), method: :delete, class: "btn btn-outline-danger", disabled: (user != current_user && !admin?), data: { confirm: "삭제하시겠습니까?"} %>
+      <%= button_to '보기', user_path(user), method: :get, class: "btn btn-outline-success" %>
+      <%= button_to '수정', edit_user_path(user), method: :get,class: "btn btn-outline-info", disabled: (user != current_user && !admin?) %>
+      <%= button_to '삭제', user_path(user), method: :delete, class: "btn btn-outline-danger", disabled: (user != current_user && !admin?), data: { confirm: "삭제하시겠습니까?"} %>
     </div>
     <hr />
     <div class="articles-count f-12 text-center">

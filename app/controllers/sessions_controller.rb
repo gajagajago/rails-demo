@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-
   end
 
   def create
@@ -9,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(user_params[:password])
       flash[:notice] = "안녕하세요 #{user.name}님 !"
       log_in user
-      redirect_to user
+      redirect_to articles_path
     elsif !user
       flash.now[:alert] = "이메일을 확인해주세요"
       render 'new'
