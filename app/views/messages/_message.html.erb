@@ -1,7 +1,9 @@
-<div class="card-text">
-  <div class="message-user m-r-5">
-    <%= message.user.name %>
-  </div>
+<div class="card-text m-b-4 <%= message.user == current_user ? 'right' : 'left' %>">
+  <% unless message.user == current_user %>
+    <div class="message-user m-r-5 p-t-4">
+      <%= message.user.name %>
+    </div>
+  <% end %>
   <div class="message-message">
     <%= simple_format(message.message) %>
   </div>
@@ -12,4 +14,19 @@
       display: flex;
       flex-direction: row;
   }
+
+  .message-message {
+      padding: 4px;
+      background: #ebebeb;
+      color: #333;
+      border-radius: 8px;
+      max-width: calc((100% - 2* 20px)/2);
+  }
+
+  .card-text.right > .message-message {
+      background: #8A74FF;
+  }
+
+  .left { justify-content: flex-start; }
+  .right { justify-content: flex-end;  }
 </style>

@@ -27,9 +27,10 @@
         <div class="card-header">
           온라인 유저
         </div>
-        <div class="card-body">
-          <p class="card-text">유준열</p>
-          <p class="card-text">라윤희</p>
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">유준열</a>
+          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">라윤희</a>
+          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">채팅봇</a>
         </div>
       </div>
     </div>
@@ -38,7 +39,7 @@
 
 <style lang="scss" scoped>
   .chatroom {
-      height: 60vh;
+      height: 80vh;
   }
 
   .chat-button {
@@ -48,8 +49,22 @@
       padding: 0;
   }
 
+  .card-body {
+      overflow-y: auto;
+  }
+
   .input-group {
       display: flex;
       flex-direction: row;
+  }
+
+  .list-group-item::before{
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 40%;
+      background-color: rgba(100,255,51,0.74);
+      margin-right: 5px;
   }
 </style>
