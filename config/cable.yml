@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redistogo-elliptical-48325
-  channel_prefix: demo_production
+  url: redis://redistogo:aa9f2b46bbfce3340c6f6d6f610d636d@scat.redistogo.com:10761/
+#  channel_prefix: demo_production
