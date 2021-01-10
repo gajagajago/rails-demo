@@ -25,6 +25,9 @@ gem 'email_validator'
 # Pagination library for Rails, Sinatra, Merb, DataMapper, and more
 gem 'will_paginate', '~> 3.1.0'
 gem 'pg'
+gem 'hirb', '~> 0.7.3'
+gem 'devise'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -25,7 +25,7 @@
       <% end %>
     </div>
   </div>
-  <p class="f-12"><%= comment.comment %></p>
+  <p class="f-12"><%= simple_format(comment.comment) %></p>
 </li>
 
 <div class="collapse" id="collapseExample<%= comment.id %>">
