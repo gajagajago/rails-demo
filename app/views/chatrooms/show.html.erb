@@ -1,0 +1,73 @@
+<h1>채팅방</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9 p-l-0">
+      <div class="chatroom card">
+        <div class="card-header">
+          메세지
+        </div>
+        <div class="card-body" id="message-container">
+          <% if @messages %>
+            <%= render @messages %>
+          <% end %>
+        </div>
+        <div class="card-footer text-muted">
+          <%= form_with(model: Message, remote: true) do |f| %>
+            <div class="input-group">
+              <%= f.text_area :message, class: "form-control m-r-10", id: "message-input", :rows => 1 %>
+              <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+              <%= f.button :submit, class: "chat-button" do %>
+                <i class="fas fa-arrow-circle-up fa-lg"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 p-r-0">
+      <div class="chatroom card">
+        <div class="card-header">
+          채팅방 리스트
+        </div>
+        <div class="list-group" id="list-tab" role="tablist">
+          <% Chatroom.all.each do |c| %>
+            <%= link_to "채팅방#{c.id}", chatroom_path(c), class: "list-group-item list-group-item-action" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" scoped>
+    .chatroom {
+        height: 80vh;
+    }
+
+    .chat-button {
+        color: #2E2F30;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    .card-body {
+        overflow-y: auto;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .list-group-item::before{
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 40%;
+        background-color: rgba(100,255,51,0.74);
+        margin-right: 5px;
+    }
+</style>
