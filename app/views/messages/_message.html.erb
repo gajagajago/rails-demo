@@ -1,9 +1,17 @@
-<div class="card-text m-b-4 <%= message.user == current_user ? 'right' : 'left' %>">
-  <% unless message.user == current_user %>
-    <div class="message-user m-r-5 p-t-4">
-      <%= message.user.name %>
-    </div>
-  <% end %>
+<!--<div class="card-text m-b-4 <%#= message.user == current_user ? 'right' : 'left' %>">-->
+  <%# unless message.user == current_user %>
+<!--    <div class="message-user m-r-5 p-t-4">-->
+      <%#= message.user.name %>
+<!--    </div>-->
+  <%# end %>
+<!--  <div class="message-message">-->
+    <%#= simple_format(message.message) %>
+<!--  </div>-->
+<!--</div>-->
+<div class="card-text m-b-4">
+  <div class="message-user m-r-5 p-t-4">
+    <%= message.user.name %> :
+  </div>
   <div class="message-message">
     <%= simple_format(message.message) %>
   </div>

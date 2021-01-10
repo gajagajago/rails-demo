@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :chatrooms, through: :messages
-  has_many :messages
+  has_many :messages, dependent: :destroy
 end

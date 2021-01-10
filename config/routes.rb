@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get 'about', to: 'pages#about'
-  # get 'chatrooms', to: 'chatroom#index'
+  post 'chatrooms', to: 'chatrooms#create'
 
   resources :users
   resources :articles
