@@ -1,0 +1,33 @@
+<h1>채팅방</h1>
+
+<div class="container">
+  <div class="chatroom card">
+    <div class="card-header">
+      채팅방 리스트
+    </div>
+    <div id="list-tab" role="tablist">
+      <% @chatroom.each do |c| %>
+        <%= link_to "채팅방#{c.id}", chatroom_path(c), class: "list-group-item list-group-item-action" %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to '생성', chatrooms_path, method: :post, class: "btn btn-outline-primary", disabled: !user_signed_in? %>
+</div>
+
+<style lang="scss" scoped>
+  .chatroom {
+      height: 80vh;
+      margin-bottom: 20px;
+  }
+
+  .list-group-item::before{
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 40%;
+      background-color: rgba(100,255,51,0.74);
+      margin-right: 5px;
+  }
+</style>

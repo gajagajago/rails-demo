@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get 'about', to: 'pages#about'
-  get 'chatroom', to: 'chatroom#index'
+  post 'chatrooms', to: 'chatrooms#create'
 
   resources :users
   resources :articles
   resources :categories, except: [:destroy]
   resources :comments
+  resources :chatrooms, only: [:index, :show]
   resources :messages, only: [:new, :create]
 
   get 'login', to: 'sessions#new'
