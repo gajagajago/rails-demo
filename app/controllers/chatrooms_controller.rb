@@ -13,7 +13,6 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    byebug
     @chatroom = Chatroom.create
     redirect_to @chatroom
   end
