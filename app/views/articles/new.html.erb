@@ -19,7 +19,7 @@
     <div class="m-b-20">
       <%= f.fields_for :post_attachments do |p| %>
         <%= f.label :avatar, 'Photo' %>
-        <%= f.file_field :avatar, :multiple => true, name: "post_attachments[avatar][]" %>
+        <%= f.file_field :avatar, multiple: true, name: "post_attachments[avatar][]" %>
       <% end %>
     </div>
 

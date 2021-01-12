@@ -11,11 +11,9 @@
   <% end %>
 </div>
 
-<div class="photos">
-  <% @article.photos.each do |p| %>
-    <%= image_tag(p.photo_url.url, size: "250x250") %>
-  <% end %>
-</div>
+<% if @article.photos.any? %>
+  <%= render partial: 'commons/photo-carousel', locals: { photos: @article.photos } %>
+<% end %>
 
 <div class="description">
   <%= simple_format(@article.description) %>
