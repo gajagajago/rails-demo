@@ -11,6 +11,10 @@
   <% end %>
 </div>
 
+<% if @article.photos.any? %>
+  <%= render partial: 'commons/photo-carousel', locals: { photos: @article.photos } %>
+<% end %>
+
 <div class="description">
   <%= simple_format(@article.description) %>
 </div>
