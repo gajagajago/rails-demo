@@ -5,7 +5,7 @@
 <% else %>
   <h1>게시글 작성</h1>
 
-  <%= form_with scope: :article, url: articles_path, local: true do |f| %>
+  <%= form_with scope: :article, url: articles_path, multipart: true, local: true do |f| %>
     <div class="m-b-20">
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -14,6 +14,13 @@
     <div class="m-b-20">
       <%= f.label :description %>
       <%= f.text_area :description, :rows => 10 %>
+    </div>
+
+    <div class="m-b-20">
+      <%= f.fields_for :post_attachments do |p| %>
+        <%= f.label :avatar, 'Photo' %>
+        <%= f.file_field :avatar, :multiple => true, name: "post_attachments[avatar][]" %>
+      <% end %>
     </div>
 
     <div class="m-b-20">
@@ -27,6 +34,7 @@
     </div>
 
     <%= f.submit '작성', class: "btn btn-outline-primary" %>
+
   <% end %>
 <% end %>
 

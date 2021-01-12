@@ -11,6 +11,12 @@
   <% end %>
 </div>
 
+<div class="photos">
+  <% @article.photos.each do |p| %>
+    <%= image_tag(p.photo_url.url, size: "250x250") %>
+  <% end %>
+</div>
+
 <div class="description">
   <%= simple_format(@article.description) %>
 </div>

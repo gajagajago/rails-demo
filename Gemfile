@@ -27,6 +27,9 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'pg'
 gem 'hirb', '~> 0.7.3'
 gem 'devise'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
