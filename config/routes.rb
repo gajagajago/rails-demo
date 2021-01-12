@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
   post 'chatrooms', to: 'chatrooms#create'
+  post 'photos', to: 'photos#create'
 
   resources :users
   resources :articles

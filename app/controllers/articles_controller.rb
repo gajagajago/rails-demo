@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @photo = @article.photos.build
   end
 
   def create
@@ -20,6 +21,10 @@ class ArticlesController < ApplicationController
     @article.user = current_user
 
     if @article.save
+      params[:post_attachments]['avatar'].each do |a|
+        @photo = @article.photos.create(photo_url: a, article: @article)
+      end
+
       flash[:notice] = "#{@article.title} 을 작성했습니다"
       redirect_to @article
     else
@@ -46,7 +51,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :description, :user_id, category_ids: [])
+    params.require(:article).permit(:title, :description, :user_id, category_ids: [], post_attachments_attributes: [:id, :avatar])
   end
 
   def set_article
