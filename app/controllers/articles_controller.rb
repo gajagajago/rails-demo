@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
 
     if @article.save
       params[:post_attachments]['avatar'].each do |a|
-        @photo = @article.photos.create(photo_url: a, article: @article)
+        @article.photos.create!(photo_url: a, article: @article)
       end
 
       flash[:notice] = "#{@article.title} 을 작성했습니다"

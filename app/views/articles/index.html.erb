@@ -1,4 +1,8 @@
-<h1>게시글</h1>
+<div class="flex-row">
+  <h1>게시글</h1>
+  <%= button_to '작성', new_article_path, method: :get, class: "btn btn-outline-primary m-l-20", disabled: !user_signed_in? %>
+</div>
+
 
 <div class="grid-col2">
   <% @article.each do |article| %>
@@ -6,14 +10,18 @@
   <% end %>
 </div>
 
-<%= button_to '작성', new_article_path, method: :get, class: "btn btn-outline-primary", disabled: !user_signed_in? %>
-
 <%= will_paginate @article, class: "flickr_pagination" %>
 
 <style lang="scss" scoped>
-  .grid-col2 {
+    .grid-col2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       column-gap: 20px;
-  }
+    }
+
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 </style>
