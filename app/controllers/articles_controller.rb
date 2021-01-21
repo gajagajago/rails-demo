@@ -21,7 +21,8 @@ class ArticlesController < ApplicationController
     @article.user = current_user
 
     if @article.save
-      if params[:post_attachments].any?
+      puts(params[:post_attachments])
+      if params[:post_attachments]
         params[:post_attachments]['avatar'].each do |a|
           @article.photos.create!(photo_url: a, article: @article)
         end
