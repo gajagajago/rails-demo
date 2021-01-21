@@ -21,8 +21,10 @@ class ArticlesController < ApplicationController
     @article.user = current_user
 
     if @article.save
-      params[:post_attachments]['avatar'].each do |a|
-        @article.photos.create!(photo_url: a, article: @article)
+      if params[:post_attachments].any?
+        params[:post_attachments]['avatar'].each do |a|
+          @article.photos.create!(photo_url: a, article: @article)
+        end
       end
 
       flash[:notice] = "#{@article.title} 을 작성했습니다"
